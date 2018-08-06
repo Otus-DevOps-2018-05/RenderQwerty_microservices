@@ -1,0 +1,11 @@
+*.tfstate
+*.tfstate.*.backup
+*.tfstate.backup
+*.tfvars
+.terraform/
+
+# docker infra
+docker-monolith/ansible/roles/
+docker-monolith/ansible/*.key
+docker-monolith/ansible/environments/*/key.json
+docker-monolith/docker/*

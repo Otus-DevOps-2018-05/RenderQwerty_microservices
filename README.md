@@ -1,2 +1,5 @@
-# RenderQwerty_microservices
-RenderQwerty microservices repository
+ # Homework 12 - docker-1
+ - Установлен docker и протестирован его успешный запуск
+ - Разобраны методы управления состоянием и статусом контейнеров.
+ ### Задание со *
+ - Добавил в docker-monolith/docker-1.log описание разницы между контейнером и образом.
