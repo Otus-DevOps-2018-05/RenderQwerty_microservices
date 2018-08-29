@@ -1,0 +1,12 @@
+---
+- name: Configure docker-host
+  hosts: tag_reddit-docker
+  become: true
+  tasks:
+
+    - name: Spinup reddit containter
+      docker_container:
+        name: reddit
+        image: jaels/otus-reddit:1.0
+        ports:
+          - "80:9292"
