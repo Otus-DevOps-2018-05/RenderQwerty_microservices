@@ -1,0 +1,70 @@
+version: '3.3'
+services:
+
+  post_db:
+    image: "mongo:${mongodb_version:-latest}"
+    volumes:
+      - post_db:/data/db
+    networks:
+      back_net:
+        aliases:
+          - comment_db
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
+
+  ui:
+    image: "${USERNAME}/ui:${ui_version:-2.2}"
+    ports:
+      - "${ui_exposed_web:-9292}:9292/tcp"
+    networks:
+      - front_net
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: service.ui
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
+      - COMMENT_SERVICE_PORT=9292
+      - COMMENT_SERVICE_HOST=comment
+      - POST_SERVICE_HOST=post
+      - POST_SERVICE_PORT=5000
+
+  post:
+    image: "${USERNAME}/post:${post_version:-2.2}"
+    networks:
+      - back_net
+      - front_net
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: service.post
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
+      - POST_DATABASE_HOST=comment_db
+
+  comment:
+    image: "${USERNAME}/comment:${comment_version:-2.2}"
+    networks:
+      - front_net
+      - back_net
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
+      - COMMENT_DATABASE_HOST=comment_db
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: service.comment
+
+volumes:
+  post_db:
+
+networks:
+  front_net:
+    external:
+      name: frontend
+  back_net:
+    external:
+      name: backend
