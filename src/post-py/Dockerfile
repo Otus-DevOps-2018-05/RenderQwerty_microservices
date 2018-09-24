@@ -1,8 +1,11 @@
 FROM python:3.6.0-alpine
 ENV POST_DATABASE_HOST post_db
 ENV POST_DATABASE posts
-WORKDIR /app
-COPY . /app
+ENV APP_HOME /app
+WORKDIR /build
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-RUN pip install -r /app/requirements.txt
+WORKDIR $APP_HOME
+COPY . $APP_HOME/
 ENTRYPOINT ["python3", "post_app.py"]
