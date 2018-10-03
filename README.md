@@ -1,3 +1,9 @@
+ # Homework - kubernetes-1
+   #### Основное задание
+   - Пройден туториал "k8s the hard way", кластер успешно развёрнут, деплойменты из kubernetes/reddit/ проверены.
+  ### Задания со *:
+  #### Описать установку компонентов kubernetes из туториала виде Ansible-плейбуков в папке kubernetes/ansible
+  - Сделал небольшую ansible роль для инсталляции утилит. Можно запустить в формате `make install` 
  # Homework - logging-1
  ### Задания со *:
   ##### Добавил multilinе grok patter в фильтр 
