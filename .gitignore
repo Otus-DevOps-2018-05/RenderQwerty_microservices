@@ -15,3 +15,6 @@ gitlab-ci/ansible/roles/
 archive/
 variables.json
 gce.ini
+
+# kubernetes
+*.pem
