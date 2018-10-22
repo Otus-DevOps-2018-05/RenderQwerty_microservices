@@ -1,3 +1,10 @@
+ # Homework - kubernetes-3
+ #### Основное задание
+ #### Обновите mongo-network-policy.yml так, чтобы post-сервис дошел до базы данных.
+  - Навесил дополнительный label `db_allowed: "true"` в deployment'е подов comment и post и по нему в NetworkPolicy выбираю поды, которым разрешён доступ к поду с mongodb.
+ ### Задания со *:
+ #### Опишите создаваемый объект Secret в виде Kubernetes манифеста.
+  - ```kubernetes/reddit/ui-secret.yml```
  # Homework - kubernetes-2
  #### Основное задание
  - minikube и GKE развёрнуты, созданы деплойменты и сервисы для реддита.
