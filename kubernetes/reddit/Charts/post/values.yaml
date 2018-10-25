@@ -1,0 +1,9 @@
+---
+
+service:
+  externalPort: 5000
+  internalPort: 5000
+image:
+  repository: jaels/post
+  tag: latest
+databaseHost:

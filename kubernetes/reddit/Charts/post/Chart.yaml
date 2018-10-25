@@ -1,0 +1,8 @@
+---
+name: post
+version: 1.0.0
+description: OTUS reddit application post
+maintainers:
+  - name: Yurii Fisakov
+    email: fisakov.root@gmail.com
+appversion: 1.0
