@@ -6,3 +6,7 @@ service:
 image:
   repository: jaels/ui
   tag: latest
+postHost:
+postPort:
+commentHost:
+commentPort:
