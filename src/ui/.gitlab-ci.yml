@@ -6,6 +6,7 @@ stages:
   - review
   - release
   - cleanup
+  - autodeploy
 
 build:
   stage: build
@@ -77,6 +78,15 @@ stop_review:
     kubernetes: active
   except:
     - master
+
+autodeploy:
+  stage: autodeploy
+  script:
+    - autodeploy
+  only:
+    refs:
+      - master
+    kubernetes: active
 
 .auto_devops: &auto_devops |
   [[ "$TRACE" ]] && set -x
@@ -196,6 +206,11 @@ stop_review:
     track="${1-stable}"
     name="$CI_ENVIRONMENT_SLUG"
     helm delete "$name" --purge || true
+  }
+
+  function autodeploy() {
+    apk add -U curl
+    curl -X POST -F token="$AUTODEPLOY_TOKEN" -F ref=master http://gitlab-gitlab/api/v4/projects/1/trigger/pipeline
   }
 
 before_script:
