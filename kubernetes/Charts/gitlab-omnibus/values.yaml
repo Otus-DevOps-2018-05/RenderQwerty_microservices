@@ -8,7 +8,7 @@
 # Recommended to set up an A record on the DNS to *.your-domain.com to point to
 # the baseIP
 # e.g. *.your-domain.com.	A	300	baseIP
-baseDomain: example.com
+baseDomain: express42.com
 
 # legoEmail is a valid email address used by Let's Encrypt. It does not have to
 # be at the baseDomain.
@@ -23,8 +23,8 @@ gitlab: ce
 gitlabCEImage: gitlab/gitlab-ce:10.6.2-ce.0
 gitlabEEImage: gitlab/gitlab-ee:10.6.2-ee.0
 postgresPassword: NDl1ZjNtenMxcWR6NXZnbw==
-initialSharedRunnersRegistrationToken: "tQtCbx5UZy_ByS7FyzUH"
-mattermostAppSecret: NDl1ZjNtenMxcWR6NXZnbw==
+initialSharedRunnersRegistrationToken: "djdfgByS7FyzUH"
+mattermostAppSecret: NDl1ZjNtenMxcWR6sdNXZnbw==
 mattermostAppUID: aadas
 redisImage: redis:3.2.10
 redisDedicatedStorage: true

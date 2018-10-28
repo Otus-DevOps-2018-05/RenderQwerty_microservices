@@ -45,4 +45,4 @@ spec:
     - {{ default "ReadWriteOnce" .Values.gitlabRegistryAccessMode | quote }}
   resources:
     requests:
-      storage: {{ default "10Gi" .Values.gitlabRegistryStorageSize }}
+      storage: {{ default "30Gi" .Values.gitlabRegistryStorageSize }}

@@ -1,7 +1,8 @@
+---
 comment:
   image:
     repository: jaels/comment
-    tag: latest
+    tag: comment
   service:
     externalPort: 9292
 
@@ -9,12 +10,12 @@ post:
   image:
     repository: jaels/post
     tag: latest
-    service:
-      externalPort: 5000
+  service:
+    externalPort: 5000
 
 ui:
   image:
     repository: jaels/ui
     tag: latest
-    service:
-      externalPort: 9292
+  service:
+    externalPort: 9292

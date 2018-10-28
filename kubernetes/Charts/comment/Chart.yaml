@@ -1,8 +1,8 @@
 ---
-name: post
+name: comment
 version: 1.0.0
-description: OTUS reddit application post
+description: OTUS reddit application comment microservice
 maintainers:
   - name: Yurii Fisakov
     email: fisakov.root@gmail.com
-appversion: 1.0
+appVersion: 1.0

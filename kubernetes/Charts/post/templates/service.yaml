@@ -2,12 +2,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name:  {{ template "post.fullname" . }}
+  name: {{ template "post.fullname" . }}
   labels:
     app: reddit
     component: post
-    release: {{ .ReleaseName }}
+    release: {{ .Release.Name }}
 spec:
+  type: ClusterIP
   ports:
   - port: {{ .Values.service.externalPort }}
     protocol: TCP
