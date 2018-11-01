@@ -1,5 +1,4 @@
-- src: renderqwerty.ansible_galaxy_gitlab
-- src: andrewrothstein.docker-machine
 - src: geerlingguy.docker
 - src: geerlingguy.pip
-- src: renderqwerty.ansible_galaxy_gitlab_runner
+- src: riemers.gitlab-runner
+- src: geerlingguy.gitlab

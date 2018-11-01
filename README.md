@@ -1,3 +1,12 @@
+ # Homework 17 - gitlab-ci-2
+  ### Задание со * - в процессе, будет доработано позже
+```Для того, чтобы обеспечить доступ к динамически созданным окружениям из gitlab, понадобится DNS сервер, на котором будут автоматически создаваться A записи для новых инстансов.
+        1. Создаём зону: gcloud dns --project=docker-123456 managed-zones create express42 --description=For\ homeworks --dns-name=fisakov.ppl33-35.com.
+        2. Добавляем A запись для gitlab сервера:
+          2.1 gcloud dns --project=docker-211515 record-sets transaction start --zone=express42
+          2.2 gcloud dns --project=docker-211515 record-sets transaction add 35.204.88.22 --name=gitlab.fisakov.ppl33-35.com. --ttl=300 --type=A --zone=express42
+          2.3 gcloud dns --project=docker-211515 record-sets transaction execute --zone=express42
+```
  # Homework 16 - gitlab-ci-1
  - Для упрощения возможных будущих задач по деплою хостов опишем инстансы с предустановленными docker и docker-compose в виде кода:
    - В каталоге gitlab-deploy/packer два шаблона пакера для деплоя инстансов. В `gitlab-ci/packer/docker-host.json` и `gitlab-ci/ansible/playbooks/packer_docker-host.yml` описываем создание gcloud инстанса и провижининга docker в него.

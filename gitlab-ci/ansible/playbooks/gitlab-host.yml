@@ -2,7 +2,5 @@
 - name: Configure gitlab-host
   hosts: tag_gitlab
   become: true
-  vars:
-    gitlab_ip: http://35.204.114.4
   roles:
-    - renderqwerty.ansible_galaxy_gitlab
+    - geerlingguy.gitlab

@@ -2,33 +2,84 @@ image: ruby:2.4.2
 stages:
   - build
   - test
-  - deploy
+  - review
+  - stage
+  - production
 
 variables:
   DATABASE_URL: 'mongodb://mongo/user_posts'
 
-before_script:
-  - cd reddit
-  - bundle install
-
 build_job:
   stage: build
+  before_script:
+    - cd reddit
   script:
-    - echo 'Building'
+    - bundle install
 
 test_unit_job:
   stage: test
-  services:
-    - mongo:latest
+  before_script:
+    - cd reddit
+    - bundle install
   script:
     - ruby simpletest.rb
+  services:
+    - mongo:latest
 
 test_integration_job:
   stage: test
   script:
     - echo 'Testing 2'
 
-deploy_job:
-  stage: deploy
+deploy_dev_job:
+  stage: review
   script:
     - echo 'Deploy'
+  environment:
+    name: dev
+    url: http://dev.express42.ppl33-35.com
+
+branch_review:
+  stage: review
+  script: echo "Deploy to $CI_ENVIRONMENT_SLUG"
+  environment:
+    name: branch/$CI_COMMIT_REF_NAME
+    url:  http://$CI_ENVIRONMENT_SLUG.express42.ppl33-35.com
+    on_stop: stop_review
+  only:
+    - branches
+  except:
+    - master
+
+stop_review:
+  stage: review
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "remove review"
+  when: manual
+  environment:
+    name: branch/$CI_COMMIT_REF_NAME
+    action: stop
+
+staging:
+  stage: stage
+  when: manual
+  only:
+    - /^\d+\.\d+\.\d+/
+  script:
+    - echo 'Deploy'
+  environment:
+    name: stage
+    url: http://beta.express42.ppl33-35.com
+
+production:
+  stage: production
+  when: manual
+  only:
+    - /^\d+\.\d+\.\d+/
+  script:
+    - echo 'Deploy'
+  environment:
+    name: production
+    url: https://prod.express42.ppl33-35.com

@@ -1,0 +1,4 @@
+- hosts: tag_runner
+  become: yes
+  roles:
+    - riemers.gitlab-runner
