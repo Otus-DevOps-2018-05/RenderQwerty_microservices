@@ -3,6 +3,7 @@
 *.tfstate.backup
 *.tfvars
 .terraform/
+*key.json
 
 # docker infra
 docker-monolith/ansible/roles/
@@ -10,3 +11,10 @@ docker-monolith/ansible/*.key
 docker-monolith/ansible/environments/*/key.json
 docker-monolith/docker/*
 .env
+
+# gitlab
+gitlab-ci/ansible/roles/
+gitlab-ci/ansible/environments/*/key.json
+archive/
+variables.json
+gce.ini
