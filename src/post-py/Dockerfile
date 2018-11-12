@@ -1,4 +1,5 @@
 FROM python:3.6.0-alpine
+RUN apk update && apk add gcc musl-dev
 ENV POST_DATABASE_HOST post_db
 ENV POST_DATABASE posts
 ENV APP_HOME /app
