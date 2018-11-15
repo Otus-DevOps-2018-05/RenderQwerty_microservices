@@ -1,0 +1,11 @@
+---
+
+- name: add keys from url
+  apt_key:
+    url: "{{ item }}"
+  loop: "{{ key_list }}"
+
+- name: Add repositories
+  apt_repository:
+    repo: "{{ item }}"
+  loop: "{{ repo_list }}"

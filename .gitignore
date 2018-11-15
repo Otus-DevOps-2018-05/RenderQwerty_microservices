@@ -16,3 +16,6 @@ gitlab-ci/ansible/environments/*/key.json
 archive/
 variables.json
 gce.ini
+
+# kubernetes
+*.pem
