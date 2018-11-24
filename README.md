@@ -1,3 +1,11 @@
+ # Homework - kubernetes-2
+ #### Основное задание
+ - minikube и GKE развёрнуты, созданы деплойменты и сервисы для реддита.
+ ### Задания со *:
+ ####  Создайте YAML-манифесты для описания созданных сущностей для включения dashboard.
+ - Опять считерил - нашёл готовые шаблоны в [репозитории k8s](https://github.com/kubernetes/dashboard/blob/master/src/deploy/recommended/kubernetes-dashboard.yaml)
+ - А вот ClusterRoleBinding украсть не получилось, пришлось сделать самостоятельно :) `kubernetes/reddit/dashboard-clusterrolebinding.yml`
+
  # Homework - kubernetes-1
    #### Основное задание
    - Пройден туториал "k8s the hard way", кластер успешно развёрнут, деплойменты из kubernetes/reddit/ проверены.
