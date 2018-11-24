@@ -19,3 +19,4 @@ gce.ini
 
 # kubernetes
 *.pem
+*.tgz
